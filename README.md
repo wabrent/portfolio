@@ -135,6 +135,7 @@ This project is open source and available under the MIT License.
 - **Telegram**: @waabrent
 - **GitHub**: [wabrent](https://github.com/wabrent)
 - **Email**: ironstark447@gmail.com
+- **Experience**: 2+ Years in Web3
 
 ---
 
