@@ -1,0 +1,233 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0f0f0f;
+    --surface:#161616;
+    --surface2:#1c1c1c;
+    --border:#262626;
+    --border2:#303030;
+    --text:#ededed;
+    --text2:#a1a1a1;
+    --text3:#525252;
+    --accent:#fff;
+    --green:#3ecf8e;
+    --blue:#4f8ef7;
+  }
+  body{background:var(--bg);color:var(--text);font-family:'Geist',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .page{max-width:900px;margin:0 auto;padding:0 2rem}
+
+  /* NAV */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,15,15,0.85);backdrop-filter:blur(12px);z-index:99}
+  .nav-logo{font-size:0.9rem;font-weight:600;letter-spacing:0.02em;color:var(--text)}
+  .nav-links{display:flex;gap:1.5rem;list-style:none}
+  .nav-links a{font-size:0.8rem;color:var(--text2);text-decoration:none;transition:color 0.15s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-badge{font-size:0.7rem;background:var(--surface2);border:1px solid var(--border2);color:var(--green);padding:0.3rem 0.7rem;border-radius:100px}
+
+  /* HERO */
+  .hero{padding:5rem 2rem 4.5rem;border-bottom:1px solid var(--border)}
+  .hero-eyebrow{display:flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block}
+  .eyebrow-text{font-size:0.75rem;color:var(--text2);font-weight:400}
+  .hero-title{font-size:3.2rem;font-weight:600;line-height:1.15;letter-spacing:-0.03em;color:var(--text);margin-bottom:1.25rem}
+  .hero-title .dim{color:var(--text3)}
+  .hero-sub{font-size:1rem;color:var(--text2);line-height:1.7;max-width:520px;font-weight:300;margin-bottom:2.5rem}
+  .hero-actions{display:flex;align-items:center;gap:0.75rem}
+  .btn-main{background:var(--text);color:#000;font-size:0.8rem;font-weight:500;padding:0.55rem 1.2rem;border:none;border-radius:6px;cursor:pointer;font-family:inherit;transition:opacity 0.15s}
+  .btn-main:hover{opacity:0.88}
+  .btn-ghost{background:transparent;color:var(--text2);font-size:0.8rem;font-weight:400;padding:0.55rem 1.2rem;border:1px solid var(--border2);border-radius:6px;cursor:pointer;font-family:inherit;transition:all 0.15s}
+  .btn-ghost:hover{color:var(--text);border-color:var(--text3)}
+
+  /* STATS ROW */
+  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border)}
+  .stat{padding:2rem;border-right:1px solid var(--border)}
+  .stat:last-child{border-right:none}
+  .stat-n{font-size:2rem;font-weight:600;letter-spacing:-0.04em;color:var(--text);margin-bottom:0.25rem}
+  .stat-l{font-size:0.75rem;color:var(--text2);font-weight:400}
+
+  /* SECTION */
+  .section{padding:3.5rem 2rem;border-bottom:1px solid var(--border)}
+  .section-label{font-size:0.7rem;font-weight:500;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2rem;font-family:'Geist Mono',monospace}
+
+  /* ABOUT */
+  .about-layout{display:grid;grid-template-columns:220px 1fr;gap:3rem;align-items:start}
+  .about-meta{display:flex;flex-direction:column;gap:1.25rem}
+  .meta-item{}
+  .meta-k{font-size:0.7rem;color:var(--text3);font-weight:400;margin-bottom:0.3rem;font-family:'Geist Mono',monospace}
+  .meta-v{font-size:0.85rem;color:var(--text2);font-weight:400}
+  .trait-list{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem}
+  .trait{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--text2)}
+  .trait::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--green);flex-shrink:0}
+  .about-text{font-size:0.92rem;color:var(--text2);line-height:1.8;font-weight:300}
+  .about-text strong{color:var(--text);font-weight:500}
+
+  /* SKILLS */
+  .skills-list{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+  .skill-card{background:var(--bg);padding:1.5rem;transition:background 0.15s}
+  .skill-card:hover{background:var(--surface)}
+  .skill-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem}
+  .skill-name{font-size:0.9rem;font-weight:500;color:var(--text)}
+  .skill-arrow{color:var(--text3);font-size:0.8rem}
+  .skill-desc{font-size:0.8rem;color:var(--text2);line-height:1.6;margin-bottom:0.9rem;font-weight:300}
+  .pills{display:flex;flex-wrap:wrap;gap:0.4rem}
+  .pill{font-size:0.7rem;padding:0.2rem 0.6rem;border-radius:4px;background:var(--surface2);color:var(--text2);border:1px solid var(--border2)}
+
+  /* PROJECTS */
+  .proj-list{display:flex;flex-direction:column;gap:1px;background:var(--border)}
+  .proj-row{background:var(--bg);padding:1.25rem 1.5rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;transition:background 0.15s;cursor:pointer}
+  .proj-row:hover{background:var(--surface)}
+  .proj-type{font-size:0.68rem;color:var(--text3);font-family:'Geist Mono',monospace;margin-bottom:0.3rem}
+  .proj-name{font-size:0.9rem;font-weight:500;color:var(--text);margin-bottom:0.3rem}
+  .proj-desc{font-size:0.78rem;color:var(--text2);font-weight:300}
+  .proj-tags{display:flex;gap:0.4rem;flex-shrink:0}
+  .proj-tag{font-size:0.65rem;padding:0.2rem 0.55rem;border-radius:4px;background:var(--surface2);color:var(--text3);border:1px solid var(--border);white-space:nowrap}
+
+  /* DISCORD */
+  .discord-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+  .discord-card{background:var(--bg);padding:1.25rem 1.5rem;transition:background 0.15s}
+  .discord-card:hover{background:var(--surface)}
+  .disc-name{font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:0.25rem}
+  .disc-role{font-size:0.72rem;color:var(--green);font-family:'Geist Mono',monospace}
+
+  /* CONTACT */
+  .contact-list{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border)}
+  .contact-card{background:var(--bg);padding:1.25rem 1.5rem;transition:background 0.15s}
+  .contact-card:hover{background:var(--surface)}
+  .c-plat{font-size:0.68rem;color:var(--text3);font-family:'Geist Mono',monospace;margin-bottom:0.35rem}
+  .c-val{font-size:0.82rem;color:var(--text2);font-weight:400}
+
+  /* FOOTER */
+  footer{padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center}
+  .f-left{font-size:0.75rem;color:var(--text3)}
+  .f-right{font-size:0.75rem;color:var(--text3);font-family:'Geist Mono',monospace}
+</style>
+
+<div style="background:var(--bg);min-height:100vh">
+<nav>
+  <span class="nav-logo">Graanit</span>
+  <ul class="nav-links">
+    <li><a href="#">About</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#">Skills</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <span class="nav-badge">Open to work</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow"><span class="dot"></span><span class="eyebrow-text">Web3 Content Creator & Builder · Ukraine</span></div>
+  <h1 class="hero-title">Hi, I'm Anatolii<br><span class="dim">Graanit.</span></h1>
+  <p class="hero-sub">Creating flawless visual content in the Web3 space. Building, writing, and actively contributing to decentralized projects.</p>
+  <div class="hero-actions">
+    <button class="btn-main">Get in Touch</button>
+    <button class="btn-ghost">Follow on X →</button>
+  </div>
+</div>
+
+<div class="stats-row">
+  <div class="stat"><div class="stat-n">2,034+</div><div class="stat-l">Followers on X</div></div>
+  <div class="stat"><div class="stat-n">2+</div><div class="stat-l">Years Experience</div></div>
+  <div class="stat"><div class="stat-n">9+</div><div class="stat-l">Projects Shipped</div></div>
+</div>
+
+<div class="section">
+  <div class="section-label">About</div>
+  <div class="about-layout">
+    <div class="about-meta">
+      <div class="meta-item"><div class="meta-k">Location</div><div class="meta-v">Ukraine</div></div>
+      <div class="meta-item"><div class="meta-k">Languages</div><div class="meta-v">Ukrainian, Russian, English</div></div>
+      <div class="meta-item"><div class="meta-k">Role</div><div class="meta-v">Builder · Creator · Researcher</div></div>
+      <div class="meta-item"><div class="meta-k">Traits</div>
+        <div class="trait-list">
+          <span class="trait">Creative</span>
+          <span class="trait">Open-minded</span>
+          <span class="trait">Adaptable</span>
+          <span class="trait">Trend-aware</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-text">
+      I primarily create content on <strong>X (Twitter)</strong> — videos, threads, and actively participate in crypto projects. My passion is creating <strong>impeccable visual content</strong> that stands out in the Web3 space.<br><br>
+      As a <strong>developer</strong>, I'm deeply involved in bringing ideas to life in the crypto ecosystem. I combine creative skills with technical knowledge to achieve exceptional results.<br><br>
+      I'm open to new opportunities and adapt easily to any environment, staying on top of emerging trends.
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Skills & Expertise</div>
+  <div class="skills-list">
+    <div class="skill-card">
+      <div class="skill-head"><span class="skill-name">Web3</span><span class="skill-arrow">↗</span></div>
+      <div class="skill-desc">Deep understanding of blockchain technology, crypto projects, and decentralized ecosystems.</div>
+      <div class="pills"><span class="pill">Crypto</span><span class="pill">Blockchain</span><span class="pill">DeFi</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-head"><span class="skill-name">Content Creation</span><span class="skill-arrow">↗</span></div>
+      <div class="skill-desc">Engaging content for social media, especially X (Twitter), with focus on quality and strategy.</div>
+      <div class="pills"><span class="pill">Social Media</span><span class="pill">Copywriting</span><span class="pill">Strategy</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-head"><span class="skill-name">Builder</span><span class="skill-arrow">↗</span></div>
+      <div class="skill-desc">Building and contributing to crypto projects, turning ideas into working products.</div>
+      <div class="pills"><span class="pill">Development</span><span class="pill">Project Mgmt</span><span class="pill">Execution</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-head"><span class="skill-name">Visual Content</span><span class="skill-arrow">↗</span></div>
+      <div class="skill-desc">Creating flawless visual content with attention to detail and strong aesthetic sense.</div>
+      <div class="pills"><span class="pill">Design</span><span class="pill">Drawing</span><span class="pill">Visual Arts</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Projects</div>
+  <div class="proj-list">
+    <div class="proj-row">
+      <div><div class="proj-type">Builder</div><div class="proj-name">Wallet Reputation Explorer</div><div class="proj-desc">Analyze wallet activity with a transparent heuristic score. Tokenless MVP, fully in-browser.</div></div>
+      <div class="proj-tags"><span class="proj-tag">Analytics</span><span class="proj-tag">Web3</span></div>
+    </div>
+    <div class="proj-row">
+      <div><div class="proj-type">AI · zkML</div><div class="proj-name">OpenGradient Model Hub</div><div class="proj-desc">Hub with 1500+ verifiable AI models featuring zkML proofs and TEE attestations.</div></div>
+      <div class="proj-tags"><span class="proj-tag">AI</span><span class="proj-tag">zkML</span></div>
+    </div>
+    <div class="proj-row">
+      <div><div class="proj-type">DeFi · Trading</div><div class="proj-name">PolyEdge Quant</div><div class="proj-desc">High-performance terminal for statistical trading on Polymarket with real-time alpha signals.</div></div>
+      <div class="proj-tags"><span class="proj-tag">Trading</span><span class="proj-tag">Quant</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Discord Roles</div>
+  <div class="discord-grid">
+    <div class="discord-card"><div class="disc-name">Billions Network</div><div class="disc-role">Contributor</div></div>
+    <div class="discord-card"><div class="disc-name">Canton Network</div><div class="disc-role">Contributor</div></div>
+    <div class="discord-card"><div class="disc-name">Codex</div><div class="disc-role">Contributor</div></div>
+    <div class="discord-card"><div class="disc-name">Dlicom</div><div class="disc-role">Contributor</div></div>
+    <div class="discord-card"><div class="disc-name">Fast Protocol</div><div class="disc-role">Contributor</div></div>
+    <div class="discord-card"><div class="disc-name">OpenSea</div><div class="disc-role">Contributor</div></div>
+    <div class="discord-card"><div class="disc-name">Optimum</div><div class="disc-role">Contributor</div></div>
+    <div class="discord-card"><div class="disc-name">Tea-Fi</div><div class="disc-role">Contributor</div></div>
+    <div class="discord-card"><div class="disc-name">Yupp</div><div class="disc-role">Contributor</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Contact</div>
+  <div class="contact-list">
+    <div class="contact-card"><div class="c-plat">X (Twitter)</div><div class="c-val">@graanit2</div></div>
+    <div class="contact-card"><div class="c-plat">Discord</div><div class="c-val">.graanit</div></div>
+    <div class="contact-card"><div class="c-plat">Telegram</div><div class="c-val">@waabrent</div></div>
+    <div class="contact-card"><div class="c-plat">GitHub</div><div class="c-val">/wabrent</div></div>
+    <div class="contact-card"><div class="c-plat">Email</div><div class="c-val" style="font-size:0.72rem">ironstark447@gmail.com</div></div>
+  </div>
+</div>
+
+<footer>
+  <span class="f-left">© 2026 Anatolii Graanit. All rights reserved.</span>
+  <span class="f-right">graanit.live</span>
+</footer>
+</div>

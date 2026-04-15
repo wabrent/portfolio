@@ -1,0 +1,52 @@
+# 📸 Как добавить скриншоты в портфолио
+
+## Самый простой способ:
+
+### Шаг 1: Положите файлы в папку images
+1. Откройте папку `portfolio/images/`
+2. Скопируйте туда ваши скриншоты
+3. Назовите их просто: `project1.jpg`, `project2.png`, `project3.jpg`
+
+### Шаг 2: Откройте index.html
+Найдите секцию **Projects** (примерно строка 270) и замените:
+
+**БЫЛО:**
+```html
+<div class="project-placeholder">
+    <i class="bi bi-twitter-x"></i>
+</div>
+```
+
+**СТАЛО:**
+```html
+<img src="images/project1.jpg" alt="Проект 1" class="project-image-src">
+```
+
+### Всё! 🎉
+
+---
+
+## Пример структуры:
+```
+portfolio/
+├── index.html          ← главный файл
+├── images/             ← сюда кладите скриншоты
+│   ├── project1.jpg
+│   ├── project2.png
+│   └── avatar.jpg
+├── css/
+└── js/
+```
+
+---
+
+## Форматы файлов:
+✅ `.jpg` / `.jpeg`
+✅ `.png`
+✅ `.webp`
+✅ `.gif`
+
+---
+
+## Нужна помощь?
+Просто положите файлы в папку `images/` и скажите мне — я сам обновлю HTML код!

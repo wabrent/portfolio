@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка скриншотов - Graanit Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --accent-color: #dc2626;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .upload-container {
+            max-width: 600px;
+            width: 100%;
+            padding: 2rem;
+        }
+        
+        .upload-card {
+            background: var(--dark-card);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            border: 2px dashed rgba(220, 38, 38, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .upload-card.dragover {
+            border-color: var(--accent-color);
+            background: rgba(220, 38, 38, 0.1);
+            transform: scale(1.02);
+        }
+        
+        .upload-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+        
+        .upload-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .upload-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .upload-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .upload-btn {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.4);
+        }
+        
+        #fileInput {
+            display: none;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .preview-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .preview-item .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 28px;
+            height: 28px;
+            background: rgba(220, 38, 38, 0.9);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .preview-item:hover .remove-btn {
+            opacity: 1;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .instructions {
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+        
+        .instructions h6 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .instructions ol {
+            margin: 0;
+            padding-left: 1.2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <a href="index.html" class="back-link">
+            <i class="bi bi-arrow-left"></i> Назад к портфолио
+        </a>
+        
+        <div class="upload-card" id="dropZone">
+            <div class="upload-icon">
+                <i class="bi bi-cloud-upload"></i>
+            </div>
+            <h1 class="upload-title">Загрузка скриншотов</h1>
+            <p class="upload-subtitle">Перетащите файлы сюда или нажмите кнопку</p>
+            
+            <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                <i class="bi bi-folder2-open"></i> Выбрать файлы
+            </button>
+            <input type="file" id="fileInput" multiple accept="image/*">
+        </div>
+        
+        <div class="preview-grid" id="previewGrid"></div>
+        
+        <div class="instructions" id="instructions">
+            <h6><i class="bi bi-info-circle"></i> Как использовать:</h6>
+            <ol>
+                <li>Перетащите скриншоты в зону выше или нажмите "Выбрать файлы"</li>
+                <li>Файлы сохранятся в папку <code>images/</code></li>
+                <li>Откройте <code>index.html</code> и добавьте изображения в секцию Projects</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const previewGrid = document.getElementById('previewGrid');
+        
+        let uploadedFiles = [];
+        
+        // Drag and drop события
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.add('dragover'), false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.remove('dragover'), false);
+        });
+        
+        dropZone.addEventListener('drop', handleDrop, false);
+        fileInput.addEventListener('change', handleFiles, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles({ target: { files: files } });
+        }
+        
+        function handleFiles(e) {
+            const files = [...e.files];
+            files.forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    uploadedFiles.push(file);
+                    previewFile(file);
+                }
+            });
+        }
+        
+        function previewFile(file) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = function() {
+                const div = document.createElement('div');
+                div.className = 'preview-item';
+                div.innerHTML = `
+                    <img src="${reader.result}" alt="${file.name}">
+                    <button class="remove-btn" onclick="removeFile('${file.name}', this)">
+                        <i class="bi bi-x"></i>
+                    </button>
+                `;
+                previewGrid.appendChild(div);
+            }
+        }
+        
+        function removeFile(filename, btn) {
+            uploadedFiles = uploadedFiles.filter(f => f.name !== filename);
+            btn.closest('.preview-item').remove();
+        }
+        
+        // Сохранение файлов (требует сервера или File System Access API)
+        uploadedFiles.forEach(file => {
+            console.log('Файл готов к загрузке:', file.name);
+        });
+    </script>
+</body>
+</html>
