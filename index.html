@@ -2,275 +2,836 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5">
     <meta name="description" content="Anatolii (Graanit) - Web3 Content Creator & Builder from Ukraine">
+    <meta name="keywords" content="Web3, Content Creator, Builder, Ukraine, Crypto, Visual Content">
     <meta name="author" content="Anatolii Graanit">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
     <meta property="og:title" content="Portfolio by Graanit">
-    <meta property="og:description" content="2+ years of experience in Web3, content creation and building.">
+    <meta property="og:description" content="2+ years of experience in Web3, content creation and building. Passionate about flawless visual content.">
     
     <title>Portfolio by Graanit</title>
     
+    <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="images/logo.jpg">
     <link rel="shortcut icon" type="image/jpeg" href="images/logo.jpg">
     
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --bg:#0f0f0f;
-            --surface:#161616;
-            --surface2:#1c1c1c;
-            --border:#262626;
-            --border2:#303030;
-            --text:#ededed;
-            --text2:#a1a1a1;
-            --text3:#525252;
-            --accent:#fff;
-            --green:#3ecf8e;
-            --blue:#4f8ef7;
-        }
-        body{background:var(--bg);color:var(--text);font-family:'Geist',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-        .page{max-width:900px;margin:0 auto;padding:0 2rem}
-
-        nav{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(15,15,15,0.85);backdrop-filter:blur(12px);z-index:99}
-        .nav-logo{font-size:0.9rem;font-weight:600;letter-spacing:0.02em;color:var(--text)}
-        .nav-links{display:flex;gap:1.5rem;list-style:none}
-        .nav-links a{font-size:0.8rem;color:var(--text2);text-decoration:none;transition:color 0.15s}
-        .nav-links a:hover{color:var(--text)}
-        .nav-badge{font-size:0.7rem;background:var(--surface2);border:1px solid var(--border2);color:var(--green);padding:0.3rem 0.7rem;border-radius:100px}
-
-        .hero{padding:5rem 2rem 4.5rem;border-bottom:1px solid var(--border)}
-        .hero-eyebrow{display:flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem}
-        .dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block}
-        .eyebrow-text{font-size:0.75rem;color:var(--text2);font-weight:400}
-        .hero-title{font-size:3.2rem;font-weight:600;line-height:1.15;letter-spacing:-0.03em;color:var(--text);margin-bottom:1.25rem}
-        .hero-title .dim{color:var(--text3)}
-        .hero-sub{font-size:1rem;color:var(--text2);line-height:1.7;max-width:520px;font-weight:300;margin-bottom:2.5rem}
-        .hero-actions{display:flex;align-items:center;gap:0.75rem}
-        .btn-main{background:var(--text);color:#000;font-size:0.8rem;font-weight:500;padding:0.55rem 1.2rem;border:none;border-radius:6px;cursor:pointer;font-family:inherit;transition:opacity 0.15s}
-        .btn-main:hover{opacity:0.88}
-        .btn-ghost{background:transparent;color:var(--text2);font-size:0.8rem;font-weight:400;padding:0.55rem 1.2rem;border:1px solid var(--border2);border-radius:6px;cursor:pointer;font-family:inherit;transition:all 0.15s}
-        .btn-ghost:hover{color:var(--text);border-color:var(--text3)}
-
-        .stats-row{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border)}
-        .stat{padding:2rem;border-right:1px solid var(--border)}
-        .stat:last-child{border-right:none}
-        .stat-n{font-size:2rem;font-weight:600;letter-spacing:-0.04em;color:var(--text);margin-bottom:0.25rem}
-        .stat-l{font-size:0.75rem;color:var(--text2);font-weight:400}
-
-        .section{padding:3.5rem 2rem;border-bottom:1px solid var(--border)}
-        .section-label{font-size:0.7rem;font-weight:500;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2rem;font-family:'Geist Mono',monospace}
-
-        .about-layout{display:grid;grid-template-columns:220px 1fr;gap:3rem;align-items:start}
-        .about-meta{display:flex;flex-direction:column;gap:1.25rem}
-        .meta-k{font-size:0.7rem;color:var(--text3);font-weight:400;margin-bottom:0.3rem;font-family:'Geist Mono',monospace}
-        .meta-v{font-size:0.85rem;color:var(--text2);font-weight:400}
-        .trait-list{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem}
-        .trait{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--text2)}
-        .trait::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--green);flex-shrink:0}
-        .about-text{font-size:0.92rem;color:var(--text2);line-height:1.8;font-weight:300}
-        .about-text strong{color:var(--text);font-weight:500}
-
-        .skills-list{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
-        .skill-card{background:var(--bg);padding:1.5rem;transition:background 0.15s}
-        .skill-card:hover{background:var(--surface)}
-        .skill-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem}
-        .skill-name{font-size:0.9rem;font-weight:500;color:var(--text)}
-        .skill-arrow{color:var(--text3);font-size:0.8rem}
-        .skill-desc{font-size:0.8rem;color:var(--text2);line-height:1.6;margin-bottom:0.9rem;font-weight:300}
-        .pills{display:flex;flex-wrap:wrap;gap:0.4rem}
-        .pill{font-size:0.7rem;padding:0.2rem 0.6rem;border-radius:4px;background:var(--surface2);color:var(--text2);border:1px solid var(--border2)}
-
-        .proj-list{display:flex;flex-direction:column;gap:1px;background:var(--border)}
-        .proj-row{background:var(--bg);padding:1.25rem 1.5rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;transition:background 0.15s;cursor:pointer}
-        .proj-row:hover{background:var(--surface)}
-        .proj-type{font-size:0.68rem;color:var(--text3);font-family:'Geist Mono',monospace;margin-bottom:0.3rem}
-        .proj-name{font-size:0.9rem;font-weight:500;color:var(--text);margin-bottom:0.3rem}
-        .proj-desc{font-size:0.78rem;color:var(--text2);font-weight:300}
-        .proj-tags{display:flex;gap:0.4rem;flex-shrink:0}
-        .proj-tag{font-size:0.65rem;padding:0.2rem 0.55rem;border-radius:4px;background:var(--surface2);color:var(--text3);border:1px solid var(--border);white-space:nowrap}
-
-        .discord-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-        .discord-card{background:var(--bg);padding:1.25rem 1.5rem;transition:background 0.15s}
-        .discord-card:hover{background:var(--surface)}
-        .disc-name{font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:0.25rem}
-        .disc-role{font-size:0.72rem;color:var(--green);font-family:'Geist Mono',monospace}
-
-        .contact-list{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border)}
-        .contact-card{background:var(--bg);padding:1.25rem 1.5rem;transition:background 0.15s}
-        .contact-card:hover{background:var(--surface)}
-        .c-plat{font-size:0.68rem;color:var(--text3);font-family:'Geist Mono',monospace;margin-bottom:0.35rem}
-        .c-val{font-size:0.82rem;color:var(--text2);font-weight:400}
-
-        footer{padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center}
-        .f-left{font-size:0.75rem;color:var(--text3)}
-        .f-right{font-size:0.75rem;color:var(--text3);font-family:'Geist Mono',monospace}
-
-        @media (max-width: 768px) {
-            .hero-title{font-size:2.2rem}
-            .about-layout{grid-template-columns:1fr}
-            .skills-list{grid-template-columns:1fr}
-            .stats-row{grid-template-columns:1fr}
-            .stat{border-right:none;border-bottom:1px solid var(--border)}
-            .discord-grid{grid-template-columns:1fr}
-            .contact-list{grid-template-columns:1fr 1fr}
-            .proj-row{grid-template-columns:1fr}
-            .proj-tags{margin-top:0.5rem}
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav>
-        <span class="nav-logo">Graanit</span>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <span class="nav-badge">Open to work</span>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <img src="images/logo.jpg" alt="GRAANIT" class="navbar-logo">
+                <span class="gradient-text">GRAANIT</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Projects
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="projectsDropdown">
+                            <li><a class="dropdown-item" href="#builders"><i class="bi bi-tools"></i> Builders</a></li>
+                            <li><a class="dropdown-item" href="#twitter-highlights"><i class="bi bi-twitter-x"></i> Twitter Highlights</a></li>
+                            <li><a class="dropdown-item" href="#discord-roles"><i class="bi bi-discord"></i> Discord Roles</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <div class="hero">
-        <div class="hero-eyebrow"><span class="dot"></span><span class="eyebrow-text">Web3 Content Creator & Builder · Ukraine</span></div>
-        <h1 class="hero-title">Hi, I'm Anatolii<br><span class="dim">Graanit.</span></h1>
-        <p class="hero-sub">Creating flawless visual content in the Web3 space. Building, writing, and actively contributing to decentralized projects.</p>
-        <div class="hero-actions">
-            <a href="#contact" class="btn-main">Get in Touch</a>
-            <a href="https://x.com/graanit2" target="_blank" class="btn-ghost">Follow on X →</a>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section d-flex align-items-center">
+        <!-- Animated Background Elements -->
+        <div class="hero-bg-animation">
+            <div class="bg-circle bg-circle-1"></div>
+            <div class="bg-circle bg-circle-2"></div>
+            <div class="bg-circle bg-circle-3"></div>
+            <div class="bg-grid"></div>
         </div>
-    </div>
-
-    <div class="stats-row">
-        <div class="stat"><div class="stat-n">2,034+</div><div class="stat-l">Followers on X</div></div>
-        <div class="stat"><div class="stat-n">2+</div><div class="stat-l">Years Experience</div></div>
-        <div class="stat"><div class="stat-n">9+</div><div class="stat-l">Projects Shipped</div></div>
-    </div>
-
-    <div class="section" id="about">
-        <div class="section-label">About</div>
-        <div class="about-layout">
-            <div class="about-meta">
-                <div class="meta-item"><div class="meta-k">Location</div><div class="meta-v">Ukraine</div></div>
-                <div class="meta-item"><div class="meta-k">Languages</div><div class="meta-v">Ukrainian, Russian, English</div></div>
-                <div class="meta-item"><div class="meta-k">Role</div><div class="meta-v">Builder · Creator · Researcher</div></div>
-                <div class="meta-item"><div class="meta-k">Traits</div>
-                    <div class="trait-list">
-                        <span class="trait">Creative</span>
-                        <span class="trait">Open-minded</span>
-                        <span class="trait">Adaptable</span>
-                        <span class="trait">Trend-aware</span>
+        
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <div class="portfolio-label animate-fade-in">
+                        <i class="bi bi-folder2-open"></i>
+                        <span>Portfolio</span>
+                    </div>
+                    <div class="hero-badge mb-3 animate-fade-in">
+                        <i class="bi bi-geo-alt-fill"></i> Ukraine
+                    </div>
+                    <h1 class="hero-title mb-3 animate-fade-in-up">
+                        Hi! I'm <span class="gradient-text fw-bold">Graanit</span>
+                    </h1>
+                    <p class="hero-lead mb-4 animate-fade-in-up delay-1">
+                        Web3 Content Creator & Builder with a passion for creating 
+                        <span class="highlight">flawless visual content</span>
+                    </p>
+                    
+                    <!-- Stats Counter -->
+                    <div class="hero-stats-counter mb-4 animate-fade-in-up delay-2">
+                        <div class="stat-counter-item">
+                            <div class="stat-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <div class="stat-value">2,034+</div>
+                            <div class="stat-label">Followers</div>
+                        </div>
+                        <div class="stat-counter-item">
+                            <div class="stat-icon">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+                            <div class="stat-value">2+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-counter-item">
+                            <div class="stat-icon">
+                                <i class="bi bi-check-circle"></i>
+                            </div>
+                            <div class="stat-value">9+</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-cta animate-fade-in-up delay-3">
+                        <a href="#contact" class="btn btn-primary btn-lg me-3">
+                            <i class="bi bi-envelope"></i> Get in Touch
+                        </a>
+                        <a href="https://x.com/graanit2" target="_blank" rel="noopener" class="btn btn-outline-danger btn-lg">
+                            <i class="bi bi-twitter-x"></i> Follow on X
+                        </a>
+                    </div>
+                    
+                    <!-- Scroll Indicator -->
+                    <div class="scroll-indicator animate-bounce">
+                        <div class="mouse">
+                            <div class="wheel"></div>
+                        </div>
+                        <p class="scroll-text">Scroll to explore</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-visual">
+                    <div class="hero-image-container">
+                        <div class="floating-shapes">
+                            <div class="shape shape-1"></div>
+                            <div class="shape shape-2"></div>
+                            <div class="shape shape-3"></div>
+                        </div>
+                        <div class="avatar-container">
+                            <div class="architectural-frame">
+                                <div class="architectural-column left"></div>
+                                <div class="architectural-column right"></div>
+                            </div>
+                            <div class="avatar-glow"></div>
+                            <div class="avatar">
+                                <img src="images/logo.jpg" alt="Anatolii Graanit" class="avatar-image">
+                            </div>
+                        </div>
+                        
+                        <!-- Contributor Projects Logos -->
+                        <div class="contributor-projects">
+                            <div class="contributor-badge">
+                                <i class="bi bi-patch-check-fill"></i>
+                                <span>Contributor</span>
+                            </div>
+                            <div class="project-logos-grid">
+                                <div class="project-logo-item" title="Billions Network">
+                                    <img src="images/Billions Network LOGO.jpg" alt="Billions Network">
+                                </div>
+                                <div class="project-logo-item" title="Canton Network">
+                                    <img src="images/Canton Network LOGO.jpg" alt="Canton Network">
+                                </div>
+                                <div class="project-logo-item" title="Codex">
+                                    <img src="images/Codex LOGO.jpg" alt="Codex">
+                                </div>
+                                <div class="project-logo-item" title="Dlicom">
+                                    <img src="images/Dlicom LOGO.jpg" alt="Dlicom">
+                                </div>
+                                <div class="project-logo-item" title="Fast Protocol">
+                                    <img src="images/Fast Protocol LOGO.png" alt="Fast Protocol">
+                                </div>
+                                <div class="project-logo-item" title="OpenSea">
+                                    <img src="images/OpenSea LOGO.jpg" alt="OpenSea">
+                                </div>
+                                <div class="project-logo-item" title="Optimum">
+                                    <img src="images/Optimum LOGO.jpg" alt="Optimum">
+                                </div>
+                                <div class="project-logo-item" title="Tea-Fi">
+                                    <img src="images/Tea -Fi LOGO.jpg" alt="Tea-Fi">
+                                </div>
+                                <div class="project-logo-item" title="Yupp">
+                                    <img src="images/Yupp LOGO.png" alt="Yupp">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="about-text">
-                I primarily create content on <strong>X (Twitter)</strong> — videos, threads, and actively participate in crypto projects. My passion is creating <strong>impeccable visual content</strong> that stands out in the Web3 space.<br><br>
-                As a <strong>developer</strong>, I'm deeply involved in bringing ideas to life in the crypto ecosystem. I combine creative skills with technical knowledge to achieve exceptional results.<br><br>
-                I'm open to new opportunities and adapt easily to any environment, staying on top of emerging trends.
-            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="section" id="skills">
-        <div class="section-label">Skills & Expertise</div>
-        <div class="skills-list">
-            <div class="skill-card">
-                <div class="skill-head"><span class="skill-name">Web3</span><span class="skill-arrow">↗</span></div>
-                <div class="skill-desc">Deep understanding of blockchain technology, crypto projects, and decentralized ecosystems.</div>
-                <div class="pills"><span class="pill">Crypto</span><span class="pill">Blockchain</span><span class="pill">DeFi</span></div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-head"><span class="skill-name">Content Creation</span><span class="skill-arrow">↗</span></div>
-                <div class="skill-desc">Engaging content for social media, especially X (Twitter), with focus on quality and strategy.</div>
-                <div class="pills"><span class="pill">Social Media</span><span class="pill">Copywriting</span><span class="pill">Strategy</span></div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-head"><span class="skill-name">Builder</span><span class="skill-arrow">↗</span></div>
-                <div class="skill-desc">Building and contributing to crypto projects, turning ideas into working products.</div>
-                <div class="pills"><span class="pill">Development</span><span class="pill">Project Mgmt</span><span class="pill">Execution</span></div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-head"><span class="skill-name">Visual Content</span><span class="skill-arrow">↗</span></div>
-                <div class="skill-desc">Creating flawless visual content with attention to detail and strong aesthetic sense.</div>
-                <div class="pills"><span class="pill">Design</span><span class="pill">Drawing</span><span class="pill">Visual Arts</span></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section" id="projects">
-        <div class="section-label">Projects</div>
-        <div class="proj-list">
-            <div class="proj-row">
-                <div>
-                    <div class="proj-type">Builder</div>
-                    <div class="proj-name">Wallet Reputation Explorer</div>
-                    <div class="proj-desc">Analyze wallet activity with a transparent heuristic score. Tokenless MVP, fully in-browser.</div>
+    <!-- About Section -->
+    <section id="about" class="about-section py-5">
+        <div class="architectural-divider"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-header text-center mb-5">
+                        <h2 class="section-title">About Me</h2>
+                        <p class="section-subtitle">Get to know more about me</p>
+                    </div>
                 </div>
-                <div class="proj-tags"><span class="proj-tag">Analytics</span><span class="proj-tag">Web3</span></div>
             </div>
-            <div class="proj-row">
-                <div>
-                    <div class="proj-type">AI · zkML</div>
-                    <div class="proj-name">OpenGradient Model Hub</div>
-                    <div class="proj-desc">Hub with 1500+ verifiable AI models featuring zkML proofs and TEE attestations.</div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="about-image">
+                        <div class="about-card">
+                            <div class="about-card-header">
+                                <i class="bi bi-person-badge"></i>
+                            </div>
+                            <h3 class="about-card-title">Graanit</h3>
+                            <p class="about-card-subtitle">Builder | Content Creator | Web3 Research</p>
+                            <div class="about-info-list">
+                                <div class="info-item">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <span>Based in Ukraine</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="bi bi-clock-history"></i>
+                                    <span>2+ Years Experience</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="bi bi-translate"></i>
+                                    <span>Ukrainian, Russian, English</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="proj-tags"><span class="proj-tag">AI</span><span class="proj-tag">zkML</span></div>
-            </div>
-            <div class="proj-row">
-                <div>
-                    <div class="proj-type">DeFi · Trading</div>
-                    <div class="proj-name">PolyEdge Quant</div>
-                    <div class="proj-desc">High-performance terminal for statistical trading on Polymarket with real-time alpha signals.</div>
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <h3 class="about-heading mb-3">My Journey</h3>
+                        <p class="about-text">
+                            I primarily create content on <strong class="text-primary">X (Twitter)</strong>, make videos, 
+                            write threads, and actively participate in crypto projects. My passion is creating 
+                            <strong class="highlight">impeccable visual content</strong> that stands out in the Web3 space.
+                        </p>
+                        <p class="about-text">
+                            As a <strong class="text-primary">developer</strong>, I'm deeply involved in bringing ideas to life 
+                            in the crypto ecosystem. I combine my creative skills with technical knowledge to achieve 
+                            exceptional results.
+                        </p>
+                        <p class="about-text">
+                            I speak three languages: <strong>Ukrainian</strong>, <strong>Russian</strong>, and 
+                            <strong>English (intermediate)</strong>. I'm eager to meet new people and gain new experiences. 
+                            I'm open to new experiences and adapt easily to any environment. I stay on top of emerging trends 
+                            and strive to contribute to society.
+                        </p>
+                        <div class="about-traits mt-4">
+                            <div class="trait-badge">
+                                <i class="bi bi-palette"></i> Creative
+                            </div>
+                            <div class="trait-badge">
+                                <i class="bi bi-people"></i> Open-minded
+                            </div>
+                            <div class="trait-badge">
+                                <i class="bi bi-lightning-charge"></i> Adaptable
+                            </div>
+                            <div class="trait-badge">
+                                <i class="bi bi-trend-up"></i> Trend-aware
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="proj-tags"><span class="proj-tag">Trading</span><span class="proj-tag">Quant</span></div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="section">
-        <div class="section-label">Discord Roles</div>
-        <div class="discord-grid">
-            <div class="discord-card"><div class="disc-name">Billions Network</div><div class="disc-role">Contributor</div></div>
-            <div class="discord-card"><div class="disc-name">Canton Network</div><div class="disc-role">Contributor</div></div>
-            <div class="discord-card"><div class="disc-name">Codex</div><div class="disc-role">Contributor</div></div>
-            <div class="discord-card"><div class="disc-name">Dlicom</div><div class="disc-role">Contributor</div></div>
-            <div class="discord-card"><div class="disc-name">Fast Protocol</div><div class="disc-role">Contributor</div></div>
-            <div class="discord-card"><div class="disc-name">OpenSea</div><div class="disc-role">Contributor</div></div>
-            <div class="discord-card"><div class="disc-name">Optimum</div><div class="disc-role">Contributor</div></div>
-            <div class="discord-card"><div class="disc-name">Tea-Fi</div><div class="disc-role">Contributor</div></div>
-            <div class="discord-card"><div class="disc-name">Yupp</div><div class="disc-role">Contributor</div></div>
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-header text-center mb-5">
+                        <h2 class="section-title">Skills & Expertise</h2>
+                        <p class="section-subtitle">What I bring to the table</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="bi bi-pentagon"></i>
+                        </div>
+                        <h4 class="skill-title">Web3</h4>
+                        <p class="skill-description">
+                            Deep understanding of blockchain technology, crypto projects, and decentralized ecosystems
+                        </p>
+                        <div class="skill-tags">
+                            <span class="tag">Crypto</span>
+                            <span class="tag">Blockchain</span>
+                            <span class="tag">DeFi</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+                        <h4 class="skill-title">Content Creation</h4>
+                        <p class="skill-description">
+                            Creating engaging content for social media, especially X (Twitter), with focus on quality
+                        </p>
+                        <div class="skill-tags">
+                            <span class="tag">Social Media</span>
+                            <span class="tag">Copywriting</span>
+                            <span class="tag">Strategy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <h4 class="skill-title">Builder</h4>
+                        <p class="skill-description">
+                            Building and contributing to crypto projects, turning ideas into reality
+                        </p>
+                        <div class="skill-tags">
+                            <span class="tag">Development</span>
+                            <span class="tag">Project Management</span>
+                            <span class="tag">Execution</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="bi bi-palette-fill"></i>
+                        </div>
+                        <h4 class="skill-title">Visual Content</h4>
+                        <p class="skill-description">
+                            Creating flawless visual content with attention to detail and aesthetics
+                        </p>
+                        <div class="skill-tags">
+                            <span class="tag">Design</span>
+                            <span class="tag">Drawing</span>
+                            <span class="tag">Visual Arts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="section" id="contact">
-        <div class="section-label">Contact</div>
-        <div class="contact-list">
-            <a href="https://x.com/graanit2" target="_blank" class="contact-card" style="text-decoration:none;display:block">
-                <div class="c-plat">X (Twitter)</div>
-                <div class="c-val">@graanit2</div>
-            </a>
-            <a href="https://discord.com/users/.graanit" target="_blank" class="contact-card" style="text-decoration:none;display:block">
-                <div class="c-plat">Discord</div>
-                <div class="c-val">.graanit</div>
-            </a>
-            <a href="https://t.me/waabrent" target="_blank" class="contact-card" style="text-decoration:none;display:block">
-                <div class="c-plat">Telegram</div>
-                <div class="c-val">@waabrent</div>
-            </a>
-            <a href="https://github.com/wabrent" target="_blank" class="contact-card" style="text-decoration:none;display:block">
-                <div class="c-plat">GitHub</div>
-                <div class="c-val">/wabrent</div>
-            </a>
-            <a href="mailto:ironstark447@gmail.com" class="contact-card" style="text-decoration:none;display:block">
-                <div class="c-plat">Email</div>
-                <div class="c-val" style="font-size:0.72rem">ironstark447@gmail.com</div>
-            </a>
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-header text-center mb-5">
+                        <h2 class="section-title">Projects</h2>
+                        <p class="section-subtitle">Some things I've worked on</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Category 1: Builders - My Projects -->
+            <div class="row mb-5" id="builders">
+                <div class="col-12">
+                    <h3 class="category-title mb-4">
+                        <i class="bi bi-tools"></i> Builders
+                    </h3>
+                </div>
+            </div>
+            <div class="row g-4 mb-5">
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/httpsopen-gradient-blue.vercel.app.png" alt="Wallet Reputation Explorer" class="project-image-src">
+                            <div class="project-overlay">
+                                <a href="https://open-gradient-blue.vercel.app" target="_blank" rel="noopener" class="btn btn-light btn-sm">
+                                    <i class="bi bi-box-arrow-up-right"></i> Visit Project
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Wallet Reputation Explorer</h4>
+                            <p class="project-description">
+                                Analyze wallet activity with a transparent heuristic score. Runs fully in the browser for a tokenless MVP, with an upgrade path to verifiable inference later
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Analytics</span>
+                                <span class="tag">Wallet</span>
+                                <span class="tag">Web3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/httpsopen-gradient-model-hub.vercel.app.png" alt="OpenGradient Model Hub" class="project-image-src">
+                            <div class="project-overlay">
+                                <a href="https://open-gradient-model-hub.vercel.app" target="_blank" rel="noopener" class="btn btn-light btn-sm">
+                                    <i class="bi bi-box-arrow-up-right"></i> Visit Project
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">OpenGradient Model Hub</h4>
+                            <p class="project-description">
+                                Hub with 1500+ verifiable AI models featuring zkML proofs and TEE attestations
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">AI</span>
+                                <span class="tag">zkML</span>
+                                <span class="tag">TEE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/polyedgeapp.xyz.png" alt="PolyEdge Quant" class="project-image-src">
+                            <div class="project-overlay">
+                                <a href="https://polyedgeapp.xyz" target="_blank" rel="noopener" class="btn btn-light btn-sm">
+                                    <i class="bi bi-box-arrow-up-right"></i> Visit Project
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">PolyEdge Quant</h4>
+                            <p class="project-description">
+                                High-performance terminal for statistical trading on Polymarket with real-time alpha signals
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Trading</span>
+                                <span class="tag">DeFi</span>
+                                <span class="tag">Quant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: Twitter Highlights -->
+            <div class="row mb-5" id="twitter-highlights">
+                <div class="col-12">
+                    <h3 class="category-title mb-4">
+                        <i class="bi bi-twitter-x"></i> Twitter Highlights
+                    </h3>
+                </div>
+            </div>
+            <div class="row g-4 mb-5">
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/x.com graanit2 status 1961175773177401417.png" alt="Viral Tweet" class="project-image-src">
+                            <div class="project-overlay">
+                                <a href="https://x.com/graanit2/status/1961175773177401417" target="_blank" rel="noopener" class="btn btn-light btn-sm">
+                                    <i class="bi bi-box-arrow-up-right"></i> View Tweet
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Viral Tweet</h4>
+                            <p class="project-description">
+                                High-engagement tweet with great reach and community interaction
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Twitter</span>
+                                <span class="tag">Viral</span>
+                                <span class="tag">Content</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/x.com graanit2 status 1963562864867779036.png" alt="Top Tweet" class="project-image-src">
+                            <div class="project-overlay">
+                                <a href="https://x.com/graanit2/status/1963562864867779036" target="_blank" rel="noopener" class="btn btn-light btn-sm">
+                                    <i class="bi bi-box-arrow-up-right"></i> View Tweet
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Top Tweet</h4>
+                            <p class="project-description">
+                                Popular content with high engagement and impressions
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Twitter</span>
+                                <span class="tag">Viral</span>
+                                <span class="tag">Web3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/x.com graanit2 status 1963927348908003747.png" alt="Trending Tweet" class="project-image-src">
+                            <div class="project-overlay">
+                                <a href="https://x.com/graanit2/status/1963927348908003747" target="_blank" rel="noopener" class="btn btn-light btn-sm">
+                                    <i class="bi bi-box-arrow-up-right"></i> View Tweet
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Trending Tweet</h4>
+                            <p class="project-description">
+                                Trending content with massive reach in the Web3 community
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Twitter</span>
+                                <span class="tag">Trending</span>
+                                <span class="tag">Content</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/x.com graanit2 status 1967871294017544702.png" alt="Popular Tweet" class="project-image-src">
+                            <div class="project-overlay">
+                                <a href="https://x.com/graanit2/status/1967871294017544702" target="_blank" rel="noopener" class="btn btn-light btn-sm">
+                                    <i class="bi bi-box-arrow-up-right"></i> View Tweet
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Popular Tweet</h4>
+                            <p class="project-description">
+                                High-performing content with strong community engagement
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Twitter</span>
+                                <span class="tag">Viral</span>
+                                <span class="tag">Web3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/x.com graanit2 status 1974794373951889644.png" alt="Top Content" class="project-image-src">
+                            <div class="project-overlay">
+                                <a href="https://x.com/graanit2/status/1974794373951889644" target="_blank" rel="noopener" class="btn btn-light btn-sm">
+                                    <i class="bi bi-box-arrow-up-right"></i> View Tweet
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Top Content</h4>
+                            <p class="project-description">
+                                Top-performing tweet with exceptional reach and impact
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Twitter</span>
+                                <span class="tag">Top</span>
+                                <span class="tag">Content</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/httpsx.comgraanit2status1959950028761346392.png" alt="Viral Content" class="project-image-src">
+                            <div class="project-overlay">
+                                <a href="https://x.com/graanit2/status/1959950028761346392" target="_blank" rel="noopener" class="btn btn-light btn-sm">
+                                    <i class="bi bi-box-arrow-up-right"></i> View Tweet
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Viral Content</h4>
+                            <p class="project-description">
+                                Viral tweet with outstanding performance and engagement
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Twitter</span>
+                                <span class="tag">Viral</span>
+                                <span class="tag">Web3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 3: Discord Roles -->
+            <div class="row mb-5" id="discord-roles">
+                <div class="col-12">
+                    <h3 class="category-title mb-4">
+                        <i class="bi bi-discord"></i> Discord Roles
+                    </h3>
+                    <p class="text-center text-muted mb-4">Contributor</p>
+                </div>
+            </div>
+            <div class="row g-4 mb-5">
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image discord-role">
+                            <div class="project-logo-wrapper">
+                                <img src="images/Billions Network LOGO.jpg" alt="Billions Network" class="project-logo">
+                            </div>
+                            <img src="images/Billions Network.png" alt="Billions Network Role" class="project-image-src">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Billions Network</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image discord-role">
+                            <div class="project-logo-wrapper">
+                                <img src="images/Canton Network LOGO.jpg" alt="Canton Network" class="project-logo">
+                            </div>
+                            <img src="images/Canton Network.png" alt="Canton Network Role" class="project-image-src">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Canton Network</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image discord-role">
+                            <div class="project-logo-wrapper">
+                                <img src="images/Codex LOGO.jpg" alt="Codex" class="project-logo">
+                            </div>
+                            <img src="images/Codex.png" alt="Codex Role" class="project-image-src">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Codex</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image discord-role">
+                            <div class="project-logo-wrapper">
+                                <img src="images/Dlicom LOGO.jpg" alt="Dlicom" class="project-logo">
+                            </div>
+                            <img src="images/Dlicom.png" alt="Dlicom Role" class="project-image-src">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Dlicom</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image discord-role">
+                            <div class="project-logo-wrapper">
+                                <img src="images/Fast Protocol LOGO.png" alt="Fast Protocol" class="project-logo">
+                            </div>
+                            <img src="images/Fast Protocol.png" alt="Fast Protocol Role" class="project-image-src">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Fast Protocol</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image discord-role">
+                            <div class="project-logo-wrapper">
+                                <img src="images/OpenSea LOGO.jpg" alt="OpenSea" class="project-logo">
+                            </div>
+                            <img src="images/OpenSea.png" alt="OpenSea Role" class="project-image-src">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">OpenSea</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image discord-role">
+                            <div class="project-logo-wrapper">
+                                <img src="images/Optimum LOGO.jpg" alt="Optimum" class="project-logo">
+                            </div>
+                            <img src="images/Optimum.png" alt="Optimum Role" class="project-image-src">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Optimum</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image discord-role">
+                            <div class="project-logo-wrapper">
+                                <img src="images/Tea -Fi LOGO.jpg" alt="Tea-Fi" class="project-logo">
+                            </div>
+                            <img src="images/Tea -Fi.png" alt="Tea-Fi Role" class="project-image-src">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Tea-Fi</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card">
+                        <div class="project-image discord-role">
+                            <div class="project-logo-wrapper">
+                                <img src="images/Yupp LOGO.png" alt="Yupp" class="project-logo">
+                            </div>
+                            <img src="images/Yupp.png" alt="Yupp Role" class="project-image-src">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Yupp</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <footer>
-        <span class="f-left">© 2026 Anatolii Graanit. All rights reserved.</span>
-        <span class="f-right">graanit.live</span>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-header text-center mb-5">
+                        <h2 class="section-title">Get In Touch</h2>
+                        <p class="section-subtitle">Let's work together</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-content text-center">
+                        <p class="contact-text mb-5">
+                            I'm always open to new opportunities, collaborations, and interesting conversations. 
+                            Whether you have a question or just want to say hi, feel free to reach out!
+                        </p>
+                        <div class="contact-links">
+                            <a href="https://x.com/graanit2" target="_blank" rel="noopener" class="contact-link-card">
+                                <div class="contact-icon">
+                                    <i class="bi bi-twitter-x"></i>
+                                </div>
+                                <h4>X (Twitter)</h4>
+                                <p>@graanit2</p>
+                                <span class="link-text">Follow & DM</span>
+                            </a>
+                            <a href="https://discord.com/users/.graanit" target="_blank" rel="noopener" class="contact-link-card">
+                                <div class="contact-icon">
+                                    <i class="bi bi-discord"></i>
+                                </div>
+                                <h4>Discord</h4>
+                                <p>.graanit</p>
+                                <span class="link-text">Add Friend</span>
+                            </a>
+                            <a href="https://t.me/waabrent" target="_blank" rel="noopener" class="contact-link-card">
+                                <div class="contact-icon">
+                                    <i class="bi bi-telegram"></i>
+                                </div>
+                                <h4>Telegram</h4>
+                                <p>@waabrent</p>
+                                <span class="link-text">Message</span>
+                            </a>
+                            <a href="https://github.com/wabrent" target="_blank" rel="noopener" class="contact-link-card">
+                                <div class="contact-icon">
+                                    <i class="bi bi-github"></i>
+                                </div>
+                                <h4>GitHub</h4>
+                                <p>/wabrent</p>
+                                <span class="link-text">View Profile</span>
+                            </a>
+                            <a href="mailto:ironstark447@gmail.com" class="contact-link-card">
+                                <div class="contact-icon">
+                                    <i class="bi bi-envelope"></i>
+                                </div>
+                                <h4>Email</h4>
+                                <p>ironstark447@gmail.com</p>
+                                <span class="link-text">Send Email</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-muted">
+                        &copy; 2026 Anatolii Graanit. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="upload.html" class="text-muted text-decoration-none me-3" title="Загрузить скриншоты">
+                        <i class="bi bi-cloud-upload"></i> Загрузить фото
+                    </a>
+                    <div class="social-links d-inline-flex">
+                        <a href="https://x.com/graanit2" target="_blank" rel="noopener" class="social-link">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+                        <a href="https://discord.com/users/.graanit" target="_blank" rel="noopener" class="social-link">
+                            <i class="bi bi-discord"></i>
+                        </a>
+                        <a href="https://t.me/waabrent" target="_blank" rel="noopener" class="social-link">
+                            <i class="bi bi-telegram"></i>
+                        </a>
+                        <a href="https://github.com/wabrent" target="_blank" rel="noopener" class="social-link">
+                            <i class="bi bi-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTop" class="scroll-top" aria-label="Scroll to top">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
 </body>
 </html>
